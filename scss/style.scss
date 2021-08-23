@@ -1,0 +1,101 @@
+$mediaMobile: (
+    max-width: 696px,
+);
+$mediaNotMobile: (
+    min-width: 696px,
+);
+
+$itemSize: 70px;
+$brandColor: #113785;
+
+.h-timeline-wrapper {
+    .h-timeline {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding: 0 30px;
+        @media #{$mediaMobile} {
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        @media #{$mediaNotMobile} {
+            &::before {
+                content: "";
+                width: 100%;
+                background-color: $brandColor;
+                height: 2px;
+                position: absolute;
+                top: 50%;
+                left: 0;
+            }
+        }
+
+        .timeline-item {
+            transition: background 0.2s ease-in-out;
+            width: $itemSize;
+            height: $itemSize;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $brandColor;
+            color: white;
+            z-index: 2;
+            box-sizing: content-box;
+            border: 20px solid white;
+            cursor: pointer;
+            font-weight: bold;
+            &.active {
+                background-color: white;
+                box-shadow: inset 0px 0px 0px 2px $brandColor;
+                color: $brandColor;
+            }
+        }
+    }
+    // .content-line-wrapper{
+    //     display: inline-block;
+    //     position: relative;
+    // }
+    .content-line{
+        height: 100px;
+        width: 1px;
+        background: $brandColor;
+        display: block;
+        position: relative;
+        left: 30px;
+
+        transition: all 0.2s ease-in-out;
+        display: none;
+        &::before{
+            transform: translateX(-40%);
+            content: "";
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: $brandColor;
+            position: absolute;
+            top:0;
+        }
+    }
+    .content-wrapper{
+        transition: all 0.2s ease-in-out;
+        color:$brandColor;
+        border-radius: 10px;
+        padding: 20px 30px;
+        display: inline-block;
+    }
+    @media #{$mediaNotMobile} {
+        .content-wrapper{
+        border:1px solid $brandColor;
+        width: 600px;
+        position: relative;
+        }
+        .content-line{
+            position: relative;
+            display: block;
+            
+        }
+    }
+}
